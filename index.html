@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="QR Hunt is a fun event organised by ACM Student Chapter, GMRIT">
+	<meta name="author" content="Dhamareshwarakumar Gandikota">
+
+	<link rel="icon" href="./img/acm.png">
+	<title>QR Hunt | GMRASC</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- 3rd Party CSS -->
+	<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+
+	<!-- custom stylesheets -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Fonts & icons -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div id="landing">
+		<div class="row align-items-center" style="height: 100%;">
+			<div class="col-md-6 text-center">
+				<p>GMRIT ACM Student Chapter Presents</p>
+				<h1>QR Hunt</h1>
+				<div class="row mt-4 gap-2 justify-content-center">
+					<div class="col-5 col-md-2 pill info">19/02/21</div>
+					<div class="col-5 col-md-2 pill info">Saturday</div>
+					<div class="col-5 col-md-2 pill info">Competition</div>
+					<div class="col-5 col-md-2 pill info">Seminar Hall</div>
+				</div>
+				<p class="mt-4">Let's find the QRs & Crack the Hints 🔍</p>
+			</div>
+
+			<div class="col-md-6 text-center">
+				<img src="./img/qr_scan.svg" alt="QR Code" class="landing-svg">
+			</div>
+		</div>
+	</div>
+	<div id="instructions">
+		<h2 class="text-center" style="font-family: 'Press Start 2P', cursive;padding:0 0 1.8rem 0;">
+			Instructions
+		</h2>
+		<div class="row gap-5 justify-content-around" style="padding:25px;">
+			<div class="col-12 col-md-3 point">
+				<div class="raise text-center">1</div>
+
+				<p style=" font-family:'Josefin Sans',sans-serif" class="inst_text">
+					Team Size is fixed to 4 Members
+				</p>
+			</div>
+			<div class="col-12 col-md-3 point">
+				<div class="raise">2</div>
+				<p style=" font-family:'Josefin Sans',sans-serif" class="inst_text">
+					Each Student should be register for one team only
+				</p>
+
+			</div>
+			<div class="col-12 col-md-3 point">
+				<div class="raise">3</div>
+				<p style=" font-family:'Josefin Sans',sans-serif" class="inst_text">
+					Each team Should carry a mobile phone
+				</p>
+
+			</div>
+			<div class="col-12 col-md-3 point">
+				<div class="raise">4</div>
+				<p style=" font-family:'Josefin Sans',sans-serif" class="inst_text">
+					Initially Each team will be given a QR code
+				</p>
+
+			</div>
+			<div class="col-12 col-md-3 point">
+				<div class="raise">5</div>
+				<p style=" font-family:'Josefin Sans',sans-serif" class="inst_text">
+					You have to scan the QR code to get the hint to find the location of the next QR code
+				</p>
+
+			</div>
+			<div class="col-12 col-md-3 point">
+				<div class="raise">6</div>
+				<p style=" font-family:'Josefin Sans',sans-serif" class="inst_text">
+					First team which completes finding of all QR codes will be the winner
+				</p>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="reg_form container-fluid" id="landing" style="padding:1rem;height:auto;">
+		<h2 class="text-center" style="font-family: 'Press Start 2P', cursive;padding:20px;">Registration Form</h2>
+		<form class="row gap-1 needs-validation m-3" action="get.php" method="post" novalidate>
+			<!-- Team info -->
+			<div class="row justify-content-center">
+				<div class="col-md-4">
+					<label for="team_name" class="form-label">Team Name</label>
+					<input type="text" class="form-control" id="team_name" name="team_name" onchange="handleForm(this)">
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<label for="phone_number" class="form-label">Contact Number</label>
+					<input type="text" class="form-control" id="phone_number" name="phone_number" onchange="handleForm(this)">
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+			</div>
+
+			<!-- Player 1 -->
+			<div class="row mt-4">
+				<div class="col-md-4">
+					<label for="player1" class="form-label">Member 1 Name</label>
+					<input type="text" class="form-control" id="player1" name="player1" onchange="handleForm(this)">
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<label for="player1_jntu" class="form-label">JNTU No</label>
+					<input type="text" class="form-control" id="player1_jntu" name="player1_jntu" onchange="handleForm(this)">
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<label for="player1_section" class="form-label">Section</label>
+					<select class="form-select" id="player1_section" name="player1_section" onchange="handleForm(this)">
+						<option value="" disabled selected>Section</option>
+						<option value="a">A</option>
+						<option value="b">B</option>
+						<option value="c">C</option>
+						<option value="d">D</option>
+						<option value="e">E</option>
+						<option value="f">F</option>
+						<option value="g">G</option>
+						<option value="h">H</option>
+						<option value="i">I</option>
+						<option value="j">J</option>
+						<option value="k">K</option>
+						<option value="l">L</option>
+						<option value="m">M</option>
+						<option value="n">N</option>
+						<option value="o">O</option>
+						<option value="p">P</option>
+					</select>
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+			</div>
+
+			<!-- Player 2 -->
+			<div class="row mt-4">
+				<div class="col-md-4">
+					<label for="player2" class="form-label">Member 2 Name</label>
+					<input type="text" class="form-control" id="player2" name="player2" onchange="handleForm(this)">
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<label for="player2_jntu" class="form-label">JNTU No</label>
+					<input type="text" class="form-control" id="player2_jntu" name="player2_jntu" onchange="handleForm(this)">
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+
+
+				<div class="col-md-3">
+					<label for="player2_section" class="form-label">Section</label>
+					<select class="form-select" id="player2_section" name="player2_section" onchange="handleForm(this)">
+						<option value="" disabled selected>Section</option>
+						<option value="a">A</option>
+						<option value="b">B</option>
+						<option value="c">C</option>
+						<option value="d">D</option>
+						<option value="e">E</option>
+						<option value="f">F</option>
+						<option value="g">G</option>
+						<option value="h">H</option>
+						<option value="i">I</option>
+						<option value="j">J</option>
+						<option value="k">K</option>
+						<option value="l">L</option>
+						<option value="m">M</option>
+						<option value="n">N</option>
+						<option value="o">O</option>
+						<option value="p">P</option>
+					</select>
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+			</div>
+
+			<!-- Player 3 -->
+			<div class="row mt-4">
+				<div class="col-md-4">
+					<label for="player3" class="form-label">Member 3 Name</label>
+					<input type="text" class="form-control" id="player3" name="player3" onchange="handleForm(this)">
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<label for="player3_jntu" class="form-label">JNTU No</label>
+					<input type="text" class="form-control" id="player3_jntu" name="player3_jntu" onchange="handleForm(this)">
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<label for="player3_section" class="form-label">Section</label>
+					<select class="form-select" id="player3_section" name="player3_section" onchange="handleForm(this)">
+						<option value="" disabled selected>Section</option>
+						<option value="a">A</option>
+						<option value="b">B</option>
+						<option value="c">C</option>
+						<option value="d">D</option>
+						<option value="e">E</option>
+						<option value="f">F</option>
+						<option value="g">G</option>
+						<option value="h">H</option>
+						<option value="i">I</option>
+						<option value="j">J</option>
+						<option value="k">K</option>
+						<option value="l">L</option>
+						<option value="m">M</option>
+						<option value="n">N</option>
+						<option value="o">O</option>
+						<option value="p">P</option>
+					</select>
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+			</div>
+
+			<!-- Player 4 -->
+			<div class="row mt-4">
+				<div class="col-md-4">
+					<label for="player4" class="form-label">Member 4 Name</label>
+					<input type="text" class="form-control" id="player4" name="player4" onchange="handleForm(this)">
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<label for="player4_jntu" class="form-label">JNTU No</label>
+					<input type="text" class="form-control" id="player4_jntu" name="player4_jntu" onchange="handleForm(this)">
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<label for="player4_section" class="form-label">Section</label>
+					<select class="form-select" id="player4_section" name="player4_section" onchange="handleForm(this)">
+						<option value="" disabled selected>Section</option>
+						<option value="a">A</option>
+						<option value="b">B</option>
+						<option value="c">C</option>
+						<option value="d">D</option>
+						<option value="e">E</option>
+						<option value="f">F</option>
+						<option value="g">G</option>
+						<option value="h">H</option>
+						<option value="i">I</option>
+						<option value="j">J</option>
+						<option value="k">K</option>
+						<option value="l">L</option>
+						<option value="m">M</option>
+						<option value="n">N</option>
+						<option value="o">O</option>
+						<option value="p">P</option>
+					</select>
+					<div class="feedback" style="display: none;">
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-4 d-grid mt-3">
+					<button class="btn btn-primary" type="submit">Submit form</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>
